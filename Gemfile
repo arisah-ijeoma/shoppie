@@ -44,6 +44,16 @@ group :development, :test do
 
   # test framework
   gem 'rspec-rails', '~> 3.8'
+
+  # fake value generator
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+
+  # fake object generator
+  gem 'factory_bot_rails'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :development do
