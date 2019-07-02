@@ -37,9 +37,13 @@ gem 'devise'
 gem 'activeadmin'
 
 group :development, :test do
+  # debugging
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
+
+  # test framework
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
