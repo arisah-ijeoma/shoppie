@@ -14,7 +14,9 @@ describe Category, type: :model do
       let(:category) { build(:category, :invalid) }
 
       it 'does not save' do
-        expect { category.save! }.to change { Category.count }.by(0)
+        expect { category.save! }.to raise_error(
+          ActiveRecord::RecordInvalid, "Validation failed: Name can't be blank"
+        )
       end
     end
   end
