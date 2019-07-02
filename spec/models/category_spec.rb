@@ -43,4 +43,12 @@ describe Category, type: :model do
       end
     end
   end
+
+  context 'deletion' do
+    let(:cat) { create(:category) }
+
+    it 'deletes' do
+      expect { category.destroy }.to change { Category.count }.by(-1)
+    end
+  end
 end
