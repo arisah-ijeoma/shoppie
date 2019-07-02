@@ -9,5 +9,13 @@ describe Category, type: :model do
         expect { category.save! }.to change { Category.count }.by(1)
       end
     end
+
+    describe 'invalid params' do
+      let(:category) { build(:category, :invalid) }
+
+      it 'does not save' do
+        expect { category.save! }.to change { Category.count }.by(0)
+      end
+    end
   end
 end
