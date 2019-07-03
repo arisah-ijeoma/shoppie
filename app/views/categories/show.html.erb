@@ -1,6 +1,10 @@
 <%= render partial: 'layouts/navbar' %>
 
 <div class="container">
+  <% if @category %>
+    <%= select_tag :name, options_from_collection_for_select(@category.categories, 'name', 'name') %>
+  <% end %>
+
   <% if @products.present? %>
     <%= render partial: 'shared/product_card', locals: { products: @products } %>
   <% else %>
