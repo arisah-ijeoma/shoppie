@@ -37,4 +37,14 @@ describe 'category page', type: :system, js: true do
 
     expect(page).to have_content('Clear filter')
   end
+
+  scenario 'clear filter resets product list', js: true do
+    visit category_path(parent_category_1)
+    select 'Colors', from: 'category'
+
+    click_on 'Clear filter'
+
+    expect(page).to have_content('Green')
+    expect(page).to have_content('Afang')
+  end
 end
