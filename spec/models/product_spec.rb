@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Product, type: :model do
-  context 'creation' do
-    let(:product) { pdt }
+  let(:product) { pdt }
 
+  context 'creation' do
     describe 'valid params' do
       let(:pdt) { build(:product) }
 
@@ -31,6 +31,34 @@ describe Product, type: :model do
         end
       end
     end
+  end
 
+  context 'editing' do
+    let(:pdt) { create(:product, name: 'Cable') }
+
+    describe 'valid params' do
+      it 'updates correctly' do
+        product.name = 'Thanos'
+        product.save!
+        expect(product.name).to eq('Thanos')
+      end
+    end
+
+    describe 'invalid params' do
+      it 'updates correctly' do
+        product.name = ''
+        expect { product.save! }.to raise_error(
+          ActiveRecord::RecordInvalid, "Validation failed: Name can't be blank"
+        )
+      end
+    end
+  end
+
+  context 'deletion' do
+    let!(:pdt) { create(:product) }
+
+    it 'deletes' do
+      expect { product.destroy }.to change { Product.count }.by(-1)
+    end
   end
 end
