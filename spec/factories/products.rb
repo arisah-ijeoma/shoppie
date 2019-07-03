@@ -6,5 +6,9 @@ FactoryBot.define do
     status { %w[active inactive].sample }
     availability_date { Faker::Date.forward(23) }
     association(:category)
+
+    trait :invalid do
+      price { nil }
+    end
   end
 end
