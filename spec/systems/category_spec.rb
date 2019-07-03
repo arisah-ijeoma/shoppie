@@ -14,7 +14,7 @@ describe 'category page', type: :system, js: true do
   let!(:visible_child_product) { create(:product, name: 'Green', category: sub_category_1) }
 
 
-  scenario 'filtering works', js: true do
+  scenario 'filtering works' do
     visit category_path(parent_category_1)
     select 'Colors', from: 'category'
 
@@ -22,7 +22,7 @@ describe 'category page', type: :system, js: true do
     expect(page).not_to have_content('Afang')
   end
 
-  scenario 'selecting blank option resets filter', js: true do
+  scenario 'selecting blank option resets filter' do
     visit category_path(parent_category_1)
     select 'Colors', from: 'category'
     select 'Sub Categories', from: 'category'
@@ -31,14 +31,14 @@ describe 'category page', type: :system, js: true do
     expect(page).to have_content('Afang')
   end
 
-  scenario 'clear filter link shows on click of sub category', js: true do
+  scenario 'clear filter link shows on click of sub category' do
     visit category_path(parent_category_1)
     select 'Colors', from: 'category'
 
     expect(page).to have_content('Clear filter')
   end
 
-  scenario 'clear filter resets product list', js: true do
+  scenario 'clear filter resets product list' do
     visit category_path(parent_category_1)
     select 'Colors', from: 'category'
 
