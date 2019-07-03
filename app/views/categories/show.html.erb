@@ -1,3 +1,9 @@
 <%= render partial: 'layouts/navbar' %>
 
-<%= render partial: 'shared/product_card', locals: { products: @products } %>
+<div class="container">
+  <% if @products.present? %>
+    <%= render partial: 'shared/product_card', locals: { products: @products } %>
+  <% else %>
+    <h5 class="no-products">There are no products for this category yet</h5>
+  <% end %>
+</div>
