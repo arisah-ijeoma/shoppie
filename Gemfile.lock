@@ -72,6 +72,8 @@ GEM
     arbre (1.2.1)
       activesupport (>= 3.0.0)
     arel (9.0.0)
+    autoprefixer-rails (9.6.0)
+      execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -80,6 +82,10 @@ GEM
     bindex (0.7.0)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     builder (3.2.3)
     capybara (3.20.2)
       addressable
@@ -187,6 +193,7 @@ GEM
       equatable (~> 0.6)
       tty-color (~> 0.5)
     pg (1.1.4)
+    popper_js (1.14.5)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -335,6 +342,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   bootsnap (>= 1.1.0)
+  bootstrap (~> 4.3.1)
   capybara
   carrierwave (>= 2.0.0.rc, < 3.0)
   coffee-rails (~> 4.2)
@@ -343,6 +351,7 @@ DEPENDENCIES
   factory_bot_rails
   faker!
   jbuilder (~> 2.5)
+  jquery-rails
   launchy
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
