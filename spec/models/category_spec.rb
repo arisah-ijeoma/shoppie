@@ -13,7 +13,7 @@ describe Category, type: :model do
     end
 
     describe 'invalid params' do
-      let(:cat) { build(:category, :invalid) }
+      let(:cat) { build(:category, name: '') }
 
       it 'does not save' do
         expect { category.save! }.to raise_error(

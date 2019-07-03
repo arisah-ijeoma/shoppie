@@ -14,7 +14,7 @@ describe Product, type: :model do
 
     describe 'invalid params' do
       describe 'no price' do
-        let(:pdt) { build(:product, :invalid) }
+        let(:pdt) { build(:product, price: nil) }
 
         it 'does not save' do
           expect { product.save!(validate: false) }.to raise_error(ActiveRecord::NotNullViolation)
