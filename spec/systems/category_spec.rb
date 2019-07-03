@@ -21,4 +21,13 @@ describe 'category page', type: :system, js: true do
     expect(page).to have_content('Green')
     expect(page).not_to have_content('Afang')
   end
+
+  scenario 'selecting blank option resets filter', js: true do
+    visit category_path(parent_category_1)
+    select 'Colors', from: 'category'
+    select 'Sub Categories', from: 'category'
+
+    expect(page).to have_content('Green')
+    expect(page).to have_content('Afang')
+  end
 end
