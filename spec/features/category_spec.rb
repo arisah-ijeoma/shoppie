@@ -15,9 +15,9 @@ describe 'category page', type: :feature do
 
   scenario 'products belonging to clicked parent category shows' do
     visit root_path
-    click_on 'Food'
-    expect(page).to have_content('Afang')
-    expect(page).not_to have_content('Games')
-    expect(page).not_to have_content('Colors')
+    click_on 'Games'
+    expect(page).to have_content('MK11')
+    expect(page).not_to have_content('Afang')
+    expect(page).not_to have_content('Green')
   end
 end
