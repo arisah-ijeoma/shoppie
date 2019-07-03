@@ -35,7 +35,7 @@ describe 'category page', type: :feature do
 
     within('select') do
       %w[Colors].each do |option|
-        expect(find("option[value=#{option}]").text).to eq(option)
+        expect(find("option[value=#{sub_category_1.id}]").text).to eq(option)
       end
     end
   end
