@@ -13,11 +13,24 @@ describe Product, type: :model do
     end
 
     describe 'invalid params' do
-      let(:pdt) { build(:product, :invalid) }
+      describe 'no price' do
+        let(:pdt) { build(:product, :invalid) }
 
-      it 'does not save' do
-        expect { product.save!(validate: false) }.to raise_error(ActiveRecord::NotNullViolation)
+        it 'does not save' do
+          expect { product.save!(validate: false) }.to raise_error(ActiveRecord::NotNullViolation)
+        end
+      end
+
+      describe 'empty price' do
+        let(:pdt) { build(:product, price: '') }
+
+        it 'does not save' do
+          expect { product.save! }.to raise_error(
+            ActiveRecord::RecordInvalid, "Validation failed: Price can't be blank"
+          )
+        end
       end
     end
+
   end
 end
