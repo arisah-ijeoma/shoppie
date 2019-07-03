@@ -38,6 +38,14 @@ describe 'category page', type: :system, js: true do
     expect(page).to have_content('Clear filter')
   end
 
+  scenario 'selecting blank option does not show clear filter link' do
+    visit category_path(parent_category_1)
+    select 'Colors', from: 'category'
+    select 'Sub Categories', from: 'category'
+
+    expect(page).not_to have_content('Clear filter')
+  end
+
   scenario 'clear filter resets product list' do
     visit category_path(parent_category_1)
     select 'Colors', from: 'category'
