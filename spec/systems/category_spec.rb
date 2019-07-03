@@ -16,7 +16,7 @@ describe 'category page', type: :system, js: true do
 
   scenario 'filtering works', js: true do
     visit category_path(parent_category_1)
-    select 'Colors', from: 'name'
+    select 'Colors', from: 'category'
 
     expect(page).to have_content('Green')
     expect(page).not_to have_content('Afang')
