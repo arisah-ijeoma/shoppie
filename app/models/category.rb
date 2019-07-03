@@ -1,6 +1,11 @@
 class Category < ApplicationRecord
-  has_many :sub_categories, foreign_key: :parent_id
-  has_many :children, through: :sub_categories, source: :child
+  has_many :categories, foreign_key: :category_id, dependent: :destroy
+  belongs_to :category, optional: true
+
+  STATUSES = %w[active inactive].freeze
 
   validates :name, presence: true
+  validates :status, inclusion: { in: STATUSES }
+
+  accepts_nested_attributes_for :categories
 end
