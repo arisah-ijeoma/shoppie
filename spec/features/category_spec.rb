@@ -6,6 +6,7 @@ describe 'category page', type: :feature do
   # Categories
   let(:parent_category_1) { create(:category, name: 'Food') }
   let(:parent_category_2) { create(:category, name: 'Games', visible: false) }
+  let!(:sub_category_2) { create(:category, name: 'Fantasy', category: parent_category_2) }
   let(:child_category_1_1) { create(:category, name: 'Colors', category: parent_category_1 ) }
 
   # Products
@@ -19,5 +20,16 @@ describe 'category page', type: :feature do
     expect(page).to have_content('MK11')
     expect(page).not_to have_content('Afang')
     expect(page).not_to have_content('Green')
+  end
+
+  scenario 'select box has correct options' do
+    visit root_path
+    click_on 'Games'
+
+    within('select') do
+      %w[Fantasy].each do |option|
+        expect(find("option[value=#{option}]").text).to eq(option)
+      end
+    end
   end
 end
