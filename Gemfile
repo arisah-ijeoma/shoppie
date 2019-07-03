@@ -33,6 +33,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # User authentication
 gem 'devise'
 
+# Image upload
+gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
+
 # Admin interface
 gem 'activeadmin'
 

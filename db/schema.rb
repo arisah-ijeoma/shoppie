@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_093202) do
   create_table "products", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.text "description"
-    t.string "price", default: "", null: false
+    t.decimal "price", precision: 10, scale: 2, null: false
     t.string "status", default: "active", null: false
     t.date "availability_date"
     t.string "image"
