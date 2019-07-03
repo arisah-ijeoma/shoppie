@@ -8,4 +8,6 @@ class Category < ApplicationRecord
   validates :status, inclusion: { in: STATUSES }
 
   accepts_nested_attributes_for :categories
+
+  scope :main, -> { where(category_id: nil) }
 end
