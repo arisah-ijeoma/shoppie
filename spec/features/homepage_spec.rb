@@ -4,9 +4,9 @@ require 'rails_helper'
 
 describe 'home page', type: :feature do
   # Categories
-  let!(:parent_category_1) { create(:category, name: 'Food') }
-  let!(:parent_category_2) { create(:category, name: 'Games', visible: false) }
-  let!(:child_category_1_1) { create(:category, name: 'Colors', category: parent_category_1 ) }
+  let(:parent_category_1) { create(:category, name: 'Food') }
+  let(:parent_category_2) { create(:category, name: 'Games', visible: false) }
+  let(:child_category_1_1) { create(:category, name: 'Colors', category: parent_category_1 ) }
 
   # Products
   let!(:visible_parent_product) { create(:product, name: 'Afang', category: parent_category_1) }
