@@ -2,7 +2,10 @@
 
 <div class="container">
   <% if @category&.categories.any? %>
-    <%= select_tag :name, options_from_collection_for_select(@category.categories, 'name', 'name') %>
+    <div class="text-right">
+      <%= select_tag :name, options_from_collection_for_select(@category.categories, 'name', 'name'),
+          prompt: 'Sub Categories' %>
+    </div>
   <% end %>
 
   <% if @products.present? %>
