@@ -5,10 +5,14 @@
 </button>
 <div class="collapse navbar-collapse" id="navbarNav">
   <ul class="navbar-nav">
-    <% @categories.each do |category| %>
+    <% @parent_categories.each do |category| %>
       <li class="nav-item">
         <%= link_to category.name, '#?', class: 'nav-link' %>
       </li>
     <% end %>
   </ul>
 </div>
+
+<% @visible_categories.each do |category| %>
+  <%= category.products.map(&:name) %>
+<% end %>

@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @categories = Category.main
+    @parent_categories = Category.main
+    @visible_categories = Category.visible
   end
 end

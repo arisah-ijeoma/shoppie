@@ -11,4 +11,5 @@ class Category < ApplicationRecord
   accepts_nested_attributes_for :categories
 
   scope :main, -> { where(category_id: nil) }
+  scope :visible, -> { where(visible: true) }
 end
