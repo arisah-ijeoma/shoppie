@@ -17,4 +17,8 @@ class Category < ApplicationRecord
   def self.visible_products
     visible.map(&:products).flatten
   end
+
+  def all_products
+    [products, categories.map(&:products)].flatten
+  end
 end
