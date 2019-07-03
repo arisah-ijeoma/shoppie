@@ -13,12 +13,20 @@ describe 'category page', type: :feature do
   let!(:hidden_parent_product) { create(:product, name: 'MK11', category: parent_category_2) }
   let!(:visible_child_product) { create(:product, name: 'Green', category: sub_category_1) }
 
-  scenario 'products belonging to clicked parent category shows' do
+  scenario 'products belonging to clicked hidden parent category shows' do
     visit root_path
     click_on 'Games'
     expect(page).to have_content('MK11')
     expect(page).not_to have_content('Afang')
     expect(page).not_to have_content('Green')
+  end
+
+  scenario 'products belonging to clicked visible parent category shows' do
+    visit root_path
+    click_on 'Food'
+    expect(page).not_to have_content('MK11')
+    expect(page).to have_content('Afang')
+    expect(page).to have_content('Green')
   end
 
   scenario 'select box has correct options when sub categories are available' do
