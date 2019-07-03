@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe Product, type: :model do
-  let(:product) { pdt }
+  let(:product) { product }
 
   context 'creation' do
     describe 'valid params' do
-      let(:pdt) { build(:product) }
+      let(:product) { build(:product) }
 
       it 'saves' do
         expect { product.save! }.to change { Product.count }.by(1)
@@ -14,7 +14,7 @@ describe Product, type: :model do
 
     describe 'invalid params' do
       describe 'no price' do
-        let(:pdt) { build(:product, price: nil) }
+        let(:product) { build(:product, price: nil) }
 
         it 'does not save' do
           expect { product.save!(validate: false) }.to raise_error(ActiveRecord::NotNullViolation)
@@ -22,7 +22,7 @@ describe Product, type: :model do
       end
 
       describe 'empty price' do
-        let(:pdt) { build(:product, price: '') }
+        let(:product) { build(:product, price: '') }
 
         it 'does not save' do
           expect { product.save! }.to raise_error(
@@ -34,7 +34,7 @@ describe Product, type: :model do
   end
 
   context 'editing' do
-    let(:pdt) { create(:product, name: 'Cable') }
+    let(:product) { create(:product, name: 'Cable') }
 
     describe 'valid params' do
       it 'updates correctly' do
@@ -55,7 +55,7 @@ describe Product, type: :model do
   end
 
   context 'deletion' do
-    let!(:pdt) { create(:product) }
+    let!(:product) { create(:product) }
 
     it 'deletes' do
       expect { product.destroy }.to change { Product.count }.by(-1)

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 describe Category, type: :model do
-  let(:category) { cat }
+  let(:category) { category }
 
   context 'creation' do
     describe 'valid params' do
-      let(:cat) { build(:category) }
+      let(:category) { build(:category) }
 
       it 'saves' do
         expect { category.save! }.to change { Category.count }.by(1)
@@ -13,7 +13,7 @@ describe Category, type: :model do
     end
 
     describe 'invalid params' do
-      let(:cat) { build(:category, name: '') }
+      let(:category) { build(:category, name: '') }
 
       it 'does not save' do
         expect { category.save! }.to raise_error(
@@ -24,7 +24,7 @@ describe Category, type: :model do
   end
 
   context 'editing' do
-    let(:cat) { create(:category, name: 'Originals') }
+    let(:category) { create(:category, name: 'Originals') }
 
     describe 'valid params' do
       it 'updates correctly' do
@@ -45,7 +45,7 @@ describe Category, type: :model do
   end
 
   context 'deletion' do
-    let!(:cat) { create(:category) }
+    let!(:category) { create(:category) }
 
     it 'deletes' do
       expect { category.destroy }.to change { Category.count }.by(-1)
