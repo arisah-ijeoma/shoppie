@@ -31,4 +31,11 @@ describe 'category page', type: :feature do
       end
     end
   end
+
+  scenario 'select box does not show when there are no sub categories' do
+    visit root_path
+    click_on 'Games'
+
+    expect(page).not_to have_selector('select')
+  end
 end
