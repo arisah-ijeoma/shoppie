@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   end
 
   def filter
+    @category = Category.find_by(id: params[:category])
     @products =
       if params[:category].blank?
         category = Category.find_by(category_id: params[:category_id]).category

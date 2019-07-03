@@ -1,2 +1,2 @@
 $('#category_products').html("<%= j(render 'filter') %>")
-
+$('#clear_filter').html("<%= j(link_to 'Clear filter', category_path(@category), remote: true) %>")
