@@ -63,6 +63,9 @@ group :development, :test do
   # feature specs
   gem 'capybara'
   gem 'launchy'
+
+  # system specs
+  gem 'selenium-webdriver'
 end
 
 group :test do
