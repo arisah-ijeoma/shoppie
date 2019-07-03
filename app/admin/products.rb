@@ -36,7 +36,7 @@ ActiveAdmin.register Product do
       end
       row :category
       row :image do |product|
-        image_tag product.image.url
+        image_tag product.image.url, class: 'resize-for-show'
       end
     end
     active_admin_comments
