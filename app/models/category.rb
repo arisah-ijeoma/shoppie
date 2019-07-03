@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
-  has_many :categories, foreign_key: :category_id, dependent: :destroy
   belongs_to :category, optional: true
+  has_many :products
+  has_many :categories, foreign_key: :category_id, dependent: :destroy
 
   STATUSES = %w[active inactive].freeze
 
