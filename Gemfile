@@ -53,6 +53,10 @@ group :development, :test do
 
   # fake object generator
   gem 'factory_bot_rails'
+
+  # feature specs
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :test do
