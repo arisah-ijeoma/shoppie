@@ -1,0 +1,22 @@
+.resize-for-home {
+  height: 300px;
+}
+
+.card {
+  width: 300px;
+  margin-top: 30px;
+}
+
+.products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+a {
+  color: inherit;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}

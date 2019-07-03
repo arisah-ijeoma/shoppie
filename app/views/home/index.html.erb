@@ -1,18 +1,19 @@
-<%= link_to  "Jay's", root_path, class: 'navbar-brand' %>
+<%= render partial: 'navbar', locals: { categories: @parent_categories } %>
 
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav">
-    <% @parent_categories.each do |category| %>
-      <li class="nav-item">
-        <%= link_to category.name, '#?', class: 'nav-link' %>
-      </li>
+<div class="container">
+  <div class="products">
+    <% @visible_products.each do |product| %>
+      <%= link_to '#' do %>
+        <div class="card">
+          <%= image_tag(product.image.url, class: 'card-img-top resize-for-home', alt: 'product image') %>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.name %></h5>
+            <p class="card-text"><%= product.truncated_description %></p>
+            <p><%= number_to_currency(product.price, unit: '£') %></p>
+<!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
+          </div>
+        </div>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 </div>
-
-<% @visible_categories.each do |category| %>
-  <%= category.products.map(&:name) %>
-<% end %>

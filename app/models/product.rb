@@ -6,4 +6,8 @@ class Product < ApplicationRecord
 
   validates :name, :price, presence: true
   validates :status, inclusion: { in: STATUSES }
+
+  def truncated_description
+    description.truncate(30, separator: ' ')
+  end
 end
