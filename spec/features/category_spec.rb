@@ -13,7 +13,7 @@ describe 'category page', type: :feature do
   let!(:hidden_parent_product) { create(:product, name: 'MK11', category: parent_category_2) }
   let!(:visible_child_product) { create(:product, name: 'Green', category: sub_category_1) }
 
-  scenario 'products belonging to clicked hidden parent category shows' do
+  scenario 'products belonging to clicked parent category shows without child' do
     visit root_path
     click_on 'Games'
     expect(page).to have_content('MK11')
@@ -21,7 +21,7 @@ describe 'category page', type: :feature do
     expect(page).not_to have_content('Green')
   end
 
-  scenario 'products belonging to clicked visible parent category shows' do
+  scenario 'products belonging to clicked parent category shows with child' do
     visit root_path
     click_on 'Food'
     expect(page).not_to have_content('MK11')
