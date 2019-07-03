@@ -4,13 +4,12 @@
   <div class="products">
     <% @visible_products.each do |product| %>
       <%= link_to '#' do %>
-        <div class="card">
+        <div class="card h-100">
           <%= image_tag(product.image.url, class: 'card-img-top resize-for-home', alt: 'product image') %>
           <div class="card-body">
             <h5 class="card-title"><%= product.name %></h5>
             <p class="card-text"><%= product.truncated_description %></p>
             <p><%= number_to_currency(product.price, unit: '£') %></p>
-<!--            <a href="#" class="btn btn-primary">Go somewhere</a>-->
           </div>
         </div>
       <% end %>
