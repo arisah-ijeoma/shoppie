@@ -7,6 +7,10 @@ class Product < ApplicationRecord
   validates :name, :price, presence: true
   validates :status, inclusion: { in: STATUSES }
 
+  scope :filter_by_sub_category, lambda { |sub_category|
+    where(category: sub_category)
+  }
+
   def truncated_description
     description.truncate(30, separator: ' ')
   end

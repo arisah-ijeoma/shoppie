@@ -3,13 +3,21 @@
 <div class="container">
   <% if @category&.categories.any? %>
     <div class="text-right">
-      <%= select_tag :name, options_from_collection_for_select(@category.categories, 'name', 'name'),
-          prompt: 'Sub Categories' %>
+      <%= select_tag :category, options_from_collection_for_select(@category.categories, 'id', 'name'),
+          prompt: 'Sub Categories',
+          data: {
+              remote: true,
+              url: category_filter_path(@category),
+              method: 'get'
+          }
+      %>
     </div>
   <% end %>
 
   <% if @products.present? %>
-    <%= render partial: 'shared/product_card', locals: { products: @products } %>
+    <div id="category_products">
+      <%= render partial: 'shared/product_card', locals: { products: @products } %>
+    </div>
   <% else %>
     <h5 class="no-products">There are no products for this category yet</h5>
   <% end %>
