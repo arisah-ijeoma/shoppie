@@ -10,3 +10,6 @@ To run locally, do the following:
 5. run `rspec`. Specs should run green
 6. run `rails s`
 7. open `http://localhost:3000` on your browser
+
+## Future TODOS
+1. Nest sub categories in parent categories on dropdowns
