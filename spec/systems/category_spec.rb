@@ -30,4 +30,11 @@ describe 'category page', type: :system, js: true do
     expect(page).to have_content('Green')
     expect(page).to have_content('Afang')
   end
+
+  scenario 'clear filter link shows on click of sub category', js: true do
+    visit category_path(parent_category_1)
+    select 'Colors', from: 'category'
+
+    expect(page).to have_content('Clear filter')
+  end
 end
