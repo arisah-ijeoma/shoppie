@@ -12,6 +12,6 @@ class Product < ApplicationRecord
   }
 
   def truncated_description
-    description.truncate(30, separator: ' ')
+    description ? description.truncate(30, separator: ' ') : ''
   end
 end
