@@ -9,8 +9,16 @@ end
 
 category_1 = Category.create(name: 'first_sub', category: category, admin_user: admin_user)
 category_2 = Category.create(name: 'second_sub', category: category, visible: false, admin_user: admin_user)
-binding.pry
-category_3 = Category.create(name: 'third_sub', category: category, admin_user: admin_user)
+puts 'categories', [category_1, category_2]
+category_3 = Category.new
+category_3.name = 'third_sub'
+category_3.category = category
+category_3.admin_user = admin_user
+  if category_3.save
+    puts 'created'
+  else
+    puts category_3.errors
+  end
 
 Product.create(name: 'product1', category: category)
 Product.create(name: 'product2', category: category_1)
