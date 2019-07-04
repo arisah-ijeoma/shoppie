@@ -14,4 +14,10 @@ describe 'user', type: :feature do
     click_on 'Log in'
     expect(page).to have_content('Log out')
   end
+
+  scenario 'login page does not have navbar' do
+    visit '/users/sign_in'
+
+    expect(page).not_to have_selector('nav')
+  end
 end
