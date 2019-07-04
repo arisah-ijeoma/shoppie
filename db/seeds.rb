@@ -7,9 +7,19 @@ category = Category.find_or_create_by!(name: 'Sample Category') do |c|
   c.admin_user = admin_user
 end
 
-category_1 = Category.create(name: 'first_sub', category: category, admin_user: admin_user)
-category_2 = Category.create(name: 'second_sub', category: category, visible: false, admin_user: admin_user)
-category_3 = Category.create(name: 'third_sub', category: category, admin_user: admin_user)
+category_1 = Category.find_or_create_by!(name: 'first_sub') do |sc|
+  sc.category = category
+  sc.admin_user = admin_user
+end
+category_2 = Category.find_or_create_by!(name: 'second_sub') do |sc|
+  sc.category = category
+  sc.visible = false
+  sc.admin_user = admin_user
+end
+category_3 = Category.find_or_create_by!(name: 'third_sub') do |sc|
+  sc.category = category
+  sc.admin_user = admin_user
+end
 
 Product.create(name: 'product1', category: category, price: '12.34')
 Product.create(name: 'product2', category: category_1, price: '25')
