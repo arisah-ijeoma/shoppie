@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :categories, only: :show do
     get :filter
     resources :products, only: :show do
-      get :add_to_basket
+      member do
+        get :add_to_basket
+      end
     end
   end
 end

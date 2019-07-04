@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
+  include CurrentOrder
   layout :layout
+
+  before_action :get_order
 
   private
 

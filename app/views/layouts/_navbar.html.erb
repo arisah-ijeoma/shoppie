@@ -13,6 +13,12 @@
       <% end %>
     </ul>
     <ul class="navbar-nav">
+      <%= link_to '#', class: 'nav-link' do %>
+        <li class="nav-item">
+          <i class="fa fa-shopping-basket fa-2x"></i>
+          <span id="order_count"></span>
+        </li>
+      <% end %>
       <li class="nav-item">
         <% if current_user %>
           <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
