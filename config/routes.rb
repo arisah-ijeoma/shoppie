@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'home#index'
   resources :categories, only: :show do
+    resources :products, only: :show
     get :filter
   end
 end

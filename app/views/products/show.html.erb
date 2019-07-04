@@ -1,0 +1,6 @@
+<%= @product.name %>
+<%= @product.description %>
+<%= @product.image %>
+<%= number_to_currency(@product.price, unit: '£') %>
+
+<%= link_to 'Add to Basket', '#' %>
