@@ -9,6 +9,7 @@ end
 
 category_1 = Category.create(name: 'first_sub', category: category, admin_user: admin_user)
 category_2 = Category.create(name: 'second_sub', category: category, visible: false, admin_user: admin_user)
+binding.pry
 category_3 = Category.create(name: 'third_sub', category: category, admin_user: admin_user)
 
 Product.create(name: 'product1', category: category)
