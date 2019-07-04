@@ -1,25 +1,27 @@
 <%= render partial: 'layouts/navbar' %>
 
 <div class="container">
-  <% if @category&.categories.any? %>
-    <div class="text-right">
-      <%= select_tag :category, options_from_collection_for_select(@category.categories, 'id', 'name'),
-          prompt: 'Sub Categories',
-          data: {
+  <div class="row details">
+    <% if @category&.categories.any? %>
+      <div class="product-filter">
+        <%= select_tag :category, options_from_collection_for_select(@category.categories, 'id', 'name'),
+            prompt: 'Sub Categories',
+            data: {
               remote: true,
               url: category_filter_path(@category),
               method: 'get'
-          }
-      %>
-      <div id="clear_filter"></div>
-    </div>
-  <% end %>
+            }
+        %>
+        <div id="clear_filter"></div>
+      </div>
+    <% end %>
 
-  <% if @products.present? %>
-    <div id="category_products">
-      <%= render partial: 'shared/product_card', locals: { products: @products } %>
-    </div>
-  <% else %>
-    <h5 class="no-products">There are no products for this category yet</h5>
-  <% end %>
+    <% if @products.present? %>
+      <div id="category_products">
+        <%= render partial: 'shared/product_card', locals: { products: @products } %>
+      </div>
+    <% else %>
+      <h5 class="no-products">There are no products for this category yet</h5>
+    <% end %>
+  </div>
 </div>
