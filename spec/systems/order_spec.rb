@@ -13,8 +13,6 @@ describe 'orders', type: :system, js: true do
     click_on 'Cranberry'
     click_on 'Add to Basket'
 
-    within 'nav' do
-      expect(page).to have_content('1')
-    end
+    expect(page).to have_content('1')
   end
 end
