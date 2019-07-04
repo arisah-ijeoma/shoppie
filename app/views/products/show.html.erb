@@ -1,6 +1,18 @@
-<%= @product.name %>
-<%= @product.description %>
-<%= @product.image %>
-<%= number_to_currency(@product.price, unit: '£') %>
+<%= render partial: 'layouts/navbar' %>
 
-<%= link_to 'Add to Basket', '#' %>
+<div class="container">
+  <div class="row details">
+    <div class="col-md-6 col-lg-4">
+      <%= image_tag @product.image.url, class: 'resize-for-show' %>
+    </div>
+    <div class="col-md-6 col-lg-8">
+      <div class="product-details">
+        <div class="product-name"><%= @product.name %></div>
+        <div class="product-description"><%= @product.description %></div>
+        <div class="product-price"><%= number_to_currency(@product.price, unit: '£') %></div>
+      </div>
+
+      <%= link_to 'Add to Basket', '#', class: 'btn btn-primary btn-lg add-to-basket' %>
+    </div>
+  </div>
+</div>
