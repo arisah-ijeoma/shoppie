@@ -12,7 +12,8 @@
         <div class="product-price"><%= number_to_currency(@product.price, unit: '£') %></div>
       </div>
 
-      <%= link_to 'Add to Basket', '#', class: 'btn btn-primary btn-lg add-to-basket' %>
+      <%= link_to 'Add to Basket', add_to_basket_path(@product.category, @product),
+          class: 'btn btn-primary btn-lg add-to-basket' %>
     </div>
   </div>
 </div>
