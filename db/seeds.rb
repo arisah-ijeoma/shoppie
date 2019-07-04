@@ -25,3 +25,8 @@ Product.create(name: 'product1', category: category, price: '12.34')
 Product.create(name: 'product2', category: category_1, price: '25')
 Product.create(name: 'product3', category: category_2, price: '1.40')
 Product.create(name: 'product4', category: category_3, price: '17.54')
+
+User.find_or_create_by!(email: 'user@example.com') do |u|
+  u.password = 'password'
+  u.password_confirmation = 'password'
+end
