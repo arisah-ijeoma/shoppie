@@ -10,9 +10,13 @@ describe 'orders', type: :system, js: true do
     fill_in 'user_password', with: user.password
     click_on 'Log in'
 
+    # first item
     click_on 'Cranberry'
     click_on 'Add to Basket'
-
     expect(page).to have_content('1')
+
+    # adding item twice increments count
+    click_on 'Add to Basket'
+    expect(page).to have_content('2')
   end
 end
