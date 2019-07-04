@@ -20,4 +20,18 @@ describe 'user', type: :feature do
 
     expect(page).not_to have_selector('nav')
   end
+
+  scenario 'logout button does not show when user is not signed in' do
+    visit '/users/sign_in'
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_on 'Log in'
+
+    click_on 'Log out'
+
+    visit root_path
+
+    expect(page).to have_content('Log in')
+    expect(page).not_to have_content('Log out')
+  end
 end
