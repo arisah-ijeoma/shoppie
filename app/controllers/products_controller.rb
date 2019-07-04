@@ -7,6 +7,6 @@ class ProductsController < ApplicationController
 
   def add_to_basket
     product = Product.find_by(id: params[:id])
-    @order_item = @order.add_product(product)
+    @order.add_product(product)
   end
 end
