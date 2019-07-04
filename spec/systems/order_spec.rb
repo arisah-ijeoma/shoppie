@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'orders', type: :system, js: true do
   let!(:user) { create(:user) }
   let!(:product) { create(:product, name: 'Cranberry', price: '54.90') }
+  let!(:product_2) { create(:product, name: 'Television', price: '34.10') }
 
   scenario 'basket is updated when user adds to it' do
     visit '/users/sign_in'
@@ -19,5 +20,11 @@ describe 'orders', type: :system, js: true do
     click_on 'Add to Basket'
     expect(page).not_to have_selector('#order_count', visible: false, text: '1')
     expect(page).to have_selector('#order_count', visible: false, text: '2')
+
+    # adding another product updates the count
+    visit category_product_path(product_2.category, product_2)
+    click_on 'Add to Basket'
+    expect(page).not_to have_selector('#order_count', visible: false, text: '2')
+    expect(page).to have_selector('#order_count', visible: false, text: '3')
   end
 end
