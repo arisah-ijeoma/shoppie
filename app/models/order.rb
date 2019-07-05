@@ -12,4 +12,8 @@ class Order < ApplicationRecord
 
     current_item
   end
+
+  def total
+    order_items.sum(&:sub_total)
+  end
 end
