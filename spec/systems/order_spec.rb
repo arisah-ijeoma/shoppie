@@ -53,6 +53,9 @@ describe 'orders', type: :system, js: true do
       expect(page).to have_content('Cranberry')
       expect(page).to have_content('zoro@onepiece.com')
     end
-    expect(page).to have_content('Next')
+
+    within('.order-summary') do
+      expect(page).to have_content('Next')
+    end
   end
 end
