@@ -50,7 +50,7 @@
                 <div class="order-item-price"><%= number_to_currency(order_item.price, unit: '£') %></div>
               </td>
 
-              <td class="order-item-subtotal">
+              <td class="order-item-subtotal subtotal-<%= order_item.id %>">
                 <%= number_to_currency(order_item.sub_total, unit: '£') %>
               </td>
             </tr>

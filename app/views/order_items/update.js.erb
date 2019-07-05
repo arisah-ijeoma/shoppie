@@ -1,2 +1,2 @@
-$('.order-item-subtotal').html("<%= j(render 'update') %>")
+$('.subtotal-<%= @order_item.id %>').html("<%= j(render 'update') %>")
 $('.order-total').html("<%= j(render 'new_total') %>")
