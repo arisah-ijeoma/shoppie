@@ -6,10 +6,7 @@ describe 'orders', type: :system, js: true do
   let!(:product_2) { create(:product, name: 'Television', price: '34.10') }
 
   scenario 'basket is updated when user adds to it' do
-    visit '/users/sign_in'
-    fill_in 'user_email', with: user.email
-    fill_in 'user_password', with: user.password
-    click_on 'Log in'
+    login user
 
     # first item
     click_on 'Cranberry'

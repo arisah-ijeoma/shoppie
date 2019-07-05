@@ -6,7 +6,7 @@ describe 'user', type: :feature do
   let!(:user) { create(:user) }
 
   scenario 'logout button shows when user is signed in' do
-    user_logs_in
+    login user
     expect(page).to have_content('Log out')
   end
 
@@ -17,19 +17,12 @@ describe 'user', type: :feature do
   end
 
   scenario 'logout button does not show when user is not signed in' do
-    user_logs_in
+    login user
     click_on 'Log out'
 
     visit root_path
 
     expect(page).to have_content('Log in')
     expect(page).not_to have_content('Log out')
-  end
-
-  def user_logs_in
-    visit '/users/sign_in'
-    fill_in 'user_email', with: user.email
-    fill_in 'user_password', with: user.password
-    click_on 'Log in'
   end
 end
