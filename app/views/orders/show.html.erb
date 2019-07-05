@@ -1,12 +1,30 @@
 <div class="container">
   <div class="row details">
-    <div class="empty-basket-text">
-      <h3>Your basket is empty</h3>
-      <%= link_to 'Start shopping', root_path, class: 'btn btn-primary btn-lg' %>
-    </div>
+    <% if @order_items.empty? %>
+      <div class="empty-basket-text">
+        <h3>Your basket is empty</h3>
+        <%= link_to 'Start shopping', root_path, class: 'btn btn-primary btn-lg' %>
+      </div>
 
-    <div class="empty-basket">
-      <i class="fa fa-shopping-cart fa-5x"></i>
-    </div>
+      <div class="empty-basket">
+        <i class="fa fa-shopping-cart fa-5x"></i>
+      </div>
+    <% else %>
+      <% @order_items.each do |order_item| %>
+        <div class="col-md-6 col-lg-4">
+          <%= image_tag order_item.product.image.url, class: 'resize-for-show' %>
+        </div>
+        <div class="col-md-6 col-lg-8">
+          <div class="order-details">
+            <div class="order-item-name"><%= order_item.product.name %></div>
+            <div class="order-item-description"><%= order_item.product.description %></div>
+            <div class="order-item-quantity"><%= order_item.quantity %></div>
+            <div class="order-item-price"><%= number_to_currency(order_item.product.price, unit: '£') %></div>
+          </div>
+        </div>
+      <% end %>
+
+      <%= link_to 'Next', '#', class: 'btn btn-primary btn-lg' %>
+  <% end %>
   </div>
 </div>
