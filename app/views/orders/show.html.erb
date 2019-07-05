@@ -17,6 +17,7 @@
         <div class="col-md-6 col-lg-8">
           <div class="order-details">
             <div class="order-item-name"><%= order_item.name %></div>
+            <div class="order-item-seller"><%= order_item.admin_user.email %></div>
             <div class="order-item-description"><%= order_item.description %></div>
             <div class="order-item-quantity"><%= order_item.quantity %></div>
             <div class="order-item-price"><%= number_to_currency(order_item.price, unit: '£') %></div>

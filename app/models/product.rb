@@ -9,6 +9,8 @@ class Product < ApplicationRecord
   validates :name, :price, presence: true
   validates :status, inclusion: { in: STATUSES }
 
+  delegate :admin_user, to: :category
+
   scope :filter_by_sub_category, lambda { |sub_category|
     where(category: sub_category)
   }
