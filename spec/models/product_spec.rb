@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe Product, type: :model do
-  let(:product) { product }
-
   context 'creation' do
     describe 'valid params' do
       let(:product) { build(:product) }

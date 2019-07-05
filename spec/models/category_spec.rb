@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe Category, type: :model do
-  let(:category) { category }
-
   describe 'basic actions' do
     context 'creation' do
       describe 'valid params' do
