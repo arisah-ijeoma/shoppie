@@ -22,3 +22,39 @@
   text-align: center;
   width: 100%;
 }
+
+.resize-for-basket {
+  width: 70px;
+  height: 70px;
+}
+
+.order-item-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.order-item-seller {
+  color: #ababab;
+  font-size: 14px;
+}
+
+.order-item-subtotal, .order-total {
+  color: #007bff
+}
+
+.table {
+  border-collapse: separate;
+}
+
+.btn-default {
+  border: 1px solid #000;
+}
+
+.order-summary {
+  text-align: right;
+  width: 100%;
+}
+
+.order-total-text {
+  padding-bottom: 20px;
+}
