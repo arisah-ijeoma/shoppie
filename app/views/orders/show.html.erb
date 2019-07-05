@@ -10,21 +10,43 @@
         <i class="fa fa-shopping-cart fa-5x"></i>
       </div>
     <% else %>
-      <% @order_items.each do |order_item| %>
-        <div class="col-md-6 col-lg-4">
-          <%= image_tag order_item.image.url, class: 'resize-for-show' %>
-        </div>
-        <div class="col-md-6 col-lg-8">
-          <div class="order-details">
-            <div class="order-item-name"><%= order_item.name %></div>
-            <div class="order-item-seller"><%= order_item.admin_user.email %></div>
-            <div class="order-item-description"><%= order_item.description %></div>
-            <div class="order-item-quantity"><%= order_item.quantity %></div>
-            <div class="order-item-price"><%= number_to_currency(order_item.price, unit: '£') %></div>
-          </div>
-        </div>
-      <% end %>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Unit price</th>
+          <th>Subtotal</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @order_items.each do |order_item| %>
+            <tr>
+              <td>
+                <div class="col-md-6 col-lg-4">
+                  <%= image_tag order_item.image.url, class: 'resize-for-show' %>
+                  <div class="order-item-name"><%= order_item.name %></div>
+                  <div class="order-item-seller"><%= order_item.admin_user.email %></div>
+                </div>
+              </td>
 
+              <td>
+                <div class="order-item-quantity"><%= order_item.quantity %></div>
+              </td>
+
+              <td>
+                <div class="order-item-price"><%= number_to_currency(order_item.price, unit: '£') %></div>
+              </td>
+
+              <td>
+                money
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div>TOTAL <span>total</span></div>
       <%= link_to 'Next', '#', class: 'btn btn-primary btn-lg' %>
   <% end %>
   </div>
