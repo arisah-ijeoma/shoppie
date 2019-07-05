@@ -8,5 +8,11 @@ class ProductsController < ApplicationController
   def add_to_basket
     product = Product.find_by(id: params[:id])
     @order.add_product(product)
+
+    respond_to do |format|
+      format.js do
+        flash.now[:success] = 'Item has been added to basket'
+      end
+    end
   end
 end

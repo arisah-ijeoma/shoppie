@@ -10,7 +10,10 @@
 </head>
 
 <body>
-<%= render partial: 'layouts/navbar' %>
-<%= yield %>
+  <%= render partial: 'layouts/navbar' %>
+  <div id="flash" class="text-center">
+    <%= render partial: 'layouts/flash' %>
+  </div>
+  <%= yield %>
 </body>
 </html>

@@ -14,4 +14,12 @@ module ApplicationHelper
   def order_has_items?
     @order.order_items.count.positive?
   end
+
+  def flash_class(name)
+    case name
+    when 'success' then 'alert alert-success'
+    when 'error' then 'alert alert-danger'
+    else ''
+    end
+  end
 end

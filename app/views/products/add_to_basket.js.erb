@@ -1,1 +1,4 @@
 $('#order_count').html("<%= j(render 'add_to_basket') %>")
+
+$('#flash').html("<%= j render partial: 'layouts/flash' %>");
+$('.alert').fadeOut(5000);
