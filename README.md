@@ -18,3 +18,4 @@ Since it is a sample application, the admin email and password are the same as t
 ## Future TODOS
 1. Nest sub categories in parent categories on dropdowns
 1. Authorization
+1. Account for guest user
