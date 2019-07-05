@@ -2,8 +2,10 @@ require 'rails_helper'
 
 describe 'orders', type: :system, js: true do
   let!(:user) { create(:user) }
-  let!(:product) { create(:product, name: 'Cranberry', price: '54.90') }
-  let!(:product_2) { create(:product, name: 'Television', price: '34.10') }
+  let(:admin_user) { create(:admin_user, email: 'zoro@onepiece.com') }
+  let(:category) { create(:category, admin_user: admin_user) }
+  let!(:product) { create(:product, name: 'Cranberry', price: '54.90', category: category) }
+  let!(:product_2) { create(:product, name: 'Television', price: '34.10', category: category) }
 
   scenario 'basket is updated when user adds to it' do
     login user
@@ -48,6 +50,7 @@ describe 'orders', type: :system, js: true do
     expect(page).not_to have_link('Start shopping', href: root_path)
     expect(page).to have_content('2')
     expect(page).to have_content('Cranberry')
+    expect(page).to have_content('zoro@onepiece.com')
     expect(page).to have_content('Next')
   end
 end
