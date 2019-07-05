@@ -12,14 +12,14 @@
     <% else %>
       <% @order_items.each do |order_item| %>
         <div class="col-md-6 col-lg-4">
-          <%= image_tag order_item.product.image.url, class: 'resize-for-show' %>
+          <%= image_tag order_item.image.url, class: 'resize-for-show' %>
         </div>
         <div class="col-md-6 col-lg-8">
           <div class="order-details">
-            <div class="order-item-name"><%= order_item.product.name %></div>
-            <div class="order-item-description"><%= order_item.product.description %></div>
+            <div class="order-item-name"><%= order_item.name %></div>
+            <div class="order-item-description"><%= order_item.description %></div>
             <div class="order-item-quantity"><%= order_item.quantity %></div>
-            <div class="order-item-price"><%= number_to_currency(order_item.product.price, unit: '£') %></div>
+            <div class="order-item-price"><%= number_to_currency(order_item.price, unit: '£') %></div>
           </div>
         </div>
       <% end %>
