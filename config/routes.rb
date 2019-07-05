@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'home#index'
   resource :order, only: :show
+  resource :order_item, only: :update
   resources :categories, only: :show do
     get :filter
     resources :products, only: :show do
