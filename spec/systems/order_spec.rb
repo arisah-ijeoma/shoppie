@@ -65,7 +65,7 @@ describe 'orders', type: :system, js: true do
     click_on 'Add to Basket'
 
     visit '/order'
-    select 2, from: 'quantity'
+    select '2', from: 'quantity'
 
     within('table') do
       expect(page).to have_content('109.80')
