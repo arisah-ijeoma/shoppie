@@ -35,4 +35,19 @@ describe 'orders', type: :system, js: true do
 
     expect(page).to have_content('Remember me')
   end
+
+  scenario 'having items in your basket does not return an empty basket page' do
+    login user
+    click_on 'Cranberry'
+    click_on 'Add to Basket'
+    click_on 'Add to Basket'
+
+    visit '/order'
+
+    expect(page).not_to have_content('Your basket is empty')
+    expect(page).not_to have_link('Start shopping', href: root_path)
+    expect(page).to have_content('2')
+    expect(page).to have_content('Cranberry')
+    expect(page).to have_content('Next')
+  end
 end
