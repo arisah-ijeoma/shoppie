@@ -7,7 +7,7 @@ describe 'orders', type: :feature do
 
   scenario 'empty basket shows empty order page' do
     login user
-    find('fa-shopping-basket').click
+    find('.fa-shopping-basket').click
 
     expect(page).to have_content('Your basket is empty')
     expect(page).to have_link('Start shopping', href: root_path)
