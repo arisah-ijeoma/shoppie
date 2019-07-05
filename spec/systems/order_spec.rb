@@ -58,4 +58,21 @@ describe 'orders', type: :system, js: true do
       expect(page).to have_content('Next')
     end
   end
+
+  scenario 'subtotal and total update correctly for single item' do
+    login user
+    click_on 'Cranberry'
+    click_on 'Add to Basket'
+
+    visit '/order'
+    select 2, from: 'quantity'
+
+    within('table') do
+      expect(page).to have_content('109.80')
+    end
+
+    within('.order-summary') do
+      expect(page).to have_content('109.80')
+    end
+  end
 end
