@@ -14,7 +14,7 @@
     </ul>
     <ul class="navbar-nav">
       <% if user_signed_in? %>
-        <%= link_to '#', class: 'nav-link' do %>
+        <%= link_to order_path, class: 'nav-link', title: 'Basket' do %>
           <li class="nav-item">
             <i class="fa fa-shopping-basket fa-2x"></i>
             <span id="order_count"><%= order_items_count %></span>
