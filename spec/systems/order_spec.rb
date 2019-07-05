@@ -27,4 +27,12 @@ describe 'orders', type: :system, js: true do
     expect(page).not_to have_selector('#order_count', visible: false, text: '2')
     expect(page).to have_selector('#order_count', visible: false, text: '3')
   end
+
+  scenario 'user can not order without being signed in' do
+    visit root_path
+    click_on 'Cranberry'
+    click_on 'Add to Basket'
+
+    expect(page).to have_content('Remember me')
+  end
 end
