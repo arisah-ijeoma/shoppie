@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
+  belongs_to :user
 
   def add_product(product)
     current_item = order_items.find_by(product_id: product.id)
