@@ -59,7 +59,7 @@ describe 'orders', type: :system, js: true do
     end
   end
 
-  scenario 'subtotal and total update correctly for single item' do
+  scenario 'subtotal and total update correctly' do
     login user
     click_on 'Cranberry'
     click_on 'Add to Basket'
