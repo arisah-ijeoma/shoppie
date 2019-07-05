@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include CurrentOrder
   layout :layout
 
   before_action :set_order
@@ -20,10 +19,7 @@ class ApplicationController < ActionController::Base
     devise_controller? ? 'devise' : 'application'
   end
 
-  def current_user
-    return @_logged_in_user if defined?(@_logged_in_user)
-    warden = request.env["warden"]
-    @_logged_in_user = warden && warden.user(:user)
+  def set_order
+    @order = Order.find_or_create_by(user: current_user)
   end
-  helper_method :current_user
 end
