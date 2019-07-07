@@ -3,5 +3,6 @@ FactoryBot.define do
     quantity { Faker::Number.between(1, 10) }
     association(:order)
     association(:product)
+    association(:admin_user)
   end
 end

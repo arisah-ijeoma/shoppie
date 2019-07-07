@@ -49,7 +49,7 @@ describe 'orders', type: :system, js: true do
     expect(page).not_to have_content('Your basket is empty')
     expect(page).not_to have_link('Start shopping', href: root_path)
     within('table') do
-      expect(page).to have_selector('.order-item-quantity', visible: false , text: 2)
+      expect(page).to have_selector('.order-item-quantity', visible: false, text: 2)
       expect(page).to have_content('Cranberry')
       expect(page).to have_content('zoro@onepiece.com')
     end
