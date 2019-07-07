@@ -3,6 +3,12 @@ ActiveAdmin.register Product do
 
   remove_filter :updated_at, :created_at
 
+  controller do
+    def scoped_collection
+      @products = Product.my_products(current_admin_user)
+    end
+  end
+
   index do
     columns_to_exclude = %w[created_at updated_at image category_id]
     (Product.column_names - columns_to_exclude).each do |p|

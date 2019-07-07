@@ -13,6 +13,7 @@ class Category < ApplicationRecord
 
   scope :main, -> { where(category_id: nil) }
   scope :visible, -> { where(visible: true) }
+  scope :my_categories, ->(admin_user) { where(admin_user: admin_user) }
 
   def self.visible_products
     visible.map(&:products).flatten

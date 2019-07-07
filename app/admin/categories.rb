@@ -8,7 +8,7 @@ ActiveAdmin.register Category do
 
   controller do
     def scoped_collection
-      @categories = Category.where(admin_user: current_admin_user)
+      @categories = Category.my_categories(current_admin_user)
     end
   end
 

@@ -15,6 +15,8 @@ class Product < ApplicationRecord
     where(category: sub_category)
   }
 
+  scope :my_products, ->(admin_user) { joins(:category).where(categories: { admin_user_id: admin_user.id }) }
+
   def truncated_description
     description ? description.truncate(30, separator: ' ') : ''
   end
