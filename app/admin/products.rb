@@ -23,7 +23,7 @@ ActiveAdmin.register Product do
 
   form do |f|
     f.inputs 'Details' do
-      f.input :category, as: :select, include_blank: false
+      f.input :category, as: :select, include_blank: false, collection: current_admin_user.categories
       f.input :name
       f.input :description
       f.input :price
