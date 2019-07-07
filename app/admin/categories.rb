@@ -6,6 +6,12 @@ ActiveAdmin.register Category do
   filter :category, collection: -> { Category.main }
   remove_filter :categories
 
+  controller do
+    def scoped_collection
+      @categories = Category.where(admin_user: current_admin_user)
+    end
+  end
+
   form do |f|
     f.inputs 'Details' do
       f.input :name
