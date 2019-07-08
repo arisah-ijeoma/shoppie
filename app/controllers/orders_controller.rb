@@ -19,7 +19,8 @@ class OrdersController < ApplicationController
 
     if @user.update(name: name, address: address)
       @order.order_items.where.not(status: 'Complete').update(status: 'Complete', deleted: true)
-      redirect_to root_path, notice: 'Order successfully placed'
+      flash[:success] = 'Order successfully placed'
+      redirect_to root_path
     else
       render :address
     end

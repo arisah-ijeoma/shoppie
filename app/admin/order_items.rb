@@ -9,9 +9,9 @@ ActiveAdmin.register OrderItem do
   end
 
   index do
-    columns_to_exclude = %w[id order_id admin_user_id product_id]
+    columns_to_exclude = %w[id order_id admin_user_id product_id deleted]
     column 'User' do |order_item|
-      order_item.order.user
+      order_item.order.user.email
     end
     column :product
     (OrderItem.column_names - columns_to_exclude).each do |p|
