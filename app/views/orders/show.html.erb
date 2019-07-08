@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row details">
+    <% content_for :title, 'Basket' %>
     <% if @order_items.empty? %>
       <div class="empty-basket-text">
         <h3>Your basket is empty</h3>

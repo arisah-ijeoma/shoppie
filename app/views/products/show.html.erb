@@ -1,5 +1,7 @@
 <div class="container">
   <div class="row details">
+    <% content_for :title, @product.name %>
+    <% navigation_add 'Category page', category_path(@product.category) %>
     <div class="col-md-6 col-lg-4">
       <%= image_tag @product.image.url, class: 'resize-for-show' %>
     </div>

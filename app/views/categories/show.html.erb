@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row details">
+    <% content_for :title, @category.name %>
     <% if @category&.categories.any? %>
       <div class="product-filter">
         <%= select_tag :category, options_from_collection_for_select(@category.categories, 'id', 'name'),

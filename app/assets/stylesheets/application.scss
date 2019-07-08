@@ -4,3 +4,11 @@
 @import "product";
 @import "order";
 @import "font-awesome";
+
+.crumbs {
+  margin-left: 20px;
+  margin-top: 20px;
+  .crumb-link{
+    color: #007bff;
+  }
+}
