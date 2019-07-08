@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: 'home#index'
-  resource :order, only: :show
+  resource :order, only: :show do
+    get :address
+  end
   resources :order_items, only: %i[update destroy]
   resources :categories, only: :show do
     get :filter

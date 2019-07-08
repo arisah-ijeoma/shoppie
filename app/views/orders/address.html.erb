@@ -1,0 +1,19 @@
+Place order
+
+<%= link_to 'Edit basket', order_path %>
+
+<%= form_for :user do |f| %>
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Place order', class: 'btn btn-primary' %>
+  </div>
+<% end %>
