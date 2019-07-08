@@ -11,8 +11,7 @@ describe 'orders', type: :system, js: true do
     login user
 
     # first item
-    click_on 'Cranberry'
-    click_on 'Add to Basket'
+    add_product_to_basket
     expect(page).to have_selector('#order_count', visible: false, text: '1')
     expect(page).to have_content('Item has been added to basket')
 
@@ -32,16 +31,14 @@ describe 'orders', type: :system, js: true do
 
   scenario 'user can not order without being signed in' do
     visit root_path
-    click_on 'Cranberry'
-    click_on 'Add to Basket'
+    add_product_to_basket
 
     expect(page).to have_content('Remember me')
   end
 
   scenario 'having items in your basket does not return an empty basket page' do
     login user
-    click_on 'Cranberry'
-    click_on 'Add to Basket'
+    add_product_to_basket
     click_on 'Add to Basket'
 
     visit '/order'
@@ -61,8 +58,7 @@ describe 'orders', type: :system, js: true do
 
   scenario 'subtotal and total update correctly' do
     login user
-    click_on 'Cranberry'
-    click_on 'Add to Basket'
+    add_product_to_basket
 
     visit '/order'
     select '2', from: 'quantity'
@@ -78,8 +74,7 @@ describe 'orders', type: :system, js: true do
 
   scenario 'user can remove item from order list' do
     login user
-    click_on 'Cranberry'
-    click_on 'Add to Basket'
+    add_product_to_basket
 
     visit '/order'
 
@@ -90,5 +85,10 @@ describe 'orders', type: :system, js: true do
     page.driver.browser.switch_to.alert.accept
 
     expect(page).not_to have_content('Cranberry')
+  end
+
+  def add_product_to_basket
+    click_on 'Cranberry'
+    click_on 'Add to Basket'
   end
 end
