@@ -114,8 +114,7 @@ describe 'orders', type: :system, js: true do
     login user
     add_product_to_basket
 
-    visit '/order'
-    click_on 'Next'
+    visit '/order/address'
     click_on 'Edit basket'
 
     expect(OrderItem.last.status).to eq('Basket')
