@@ -53,7 +53,7 @@ describe 'orders', type: :feature do
 
       expect(OrderItem.last.reload.status).to eq('Complete')
       expect(page).to have_content('Order successfully placed')
-      expect(page).to have_selector('#order_count', visible: false, text: '1')
+      expect(page).not_to have_selector('#order_count', visible: false, text: '1')
     end
   end
 end
