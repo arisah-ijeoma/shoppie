@@ -21,15 +21,19 @@
         </thead>
         <tbody>
           <% @order_items.each do |order_item| %>
-            <tr>
-              <td class="cell-1">
+            <tr id="order-item-<%= order_item.id %>">
+              <td class="cell-<%= order_item.id %> first-cell">
                 <%= link_to category_product_path(order_item.category, order_item.product), class: 'row' do %>
-                  <div class="order-image col-md-2">
+                  <div class="order-image col-md-4">
                     <%= image_tag order_item.image.url, class: 'resize-for-basket' %>
                   </div>
-                  <div class="seller-details col-md-10">
+                  <div class="seller-details col-md-6">
                     <div class="order-item-seller">Seller: <%= order_item.admin_user.email %></div>
                     <div class="order-item-name"><%= order_item.name %></div>
+                  </div>
+                  <div class="col-md-4 remove-item">
+                    <%= link_to 'Remove', order_item_path(order_item.id), class: 'btn btn-primary',
+                        data: { remote: true, method: :delete, confirm: 'Are you sure?' } %>
                   </div>
                 <% end %>
               </td>
@@ -39,7 +43,7 @@
                   <%= select_tag :quantity, options_for_select((1..10), selected: order_item.quantity),
                       data: {
                         remote: true,
-                        url: order_item_path(item_id: order_item.id),
+                        url: order_item_path(order_item.id),
                         method: :put
                       }
                     %>
