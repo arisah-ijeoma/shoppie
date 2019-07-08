@@ -87,6 +87,28 @@ describe 'orders', type: :system, js: true do
     expect(page).not_to have_content('Cranberry')
   end
 
+  scenario 'user can remove item from multiple order lists' do
+    login user
+
+    # first item
+    add_product_to_basket
+    # adding another product updates the count
+    visit category_product_path(product_2.category, product_2)
+    click_on 'Add to Basket'
+
+    visit '/order'
+
+    within(".cell-#{OrderItem.first.id}", visible: false) do
+      click_on 'Remove'
+    end
+
+    page.driver.browser.switch_to.alert.accept
+
+    within('.order-total') do
+      expect(page).to have_content('34.10')
+    end
+  end
+
   def add_product_to_basket
     click_on 'Cranberry'
     click_on 'Add to Basket'
