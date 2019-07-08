@@ -18,7 +18,8 @@ class OrdersController < ApplicationController
     address = params[:user][:address]
 
     if @user.update(name: name, address: address)
-      # redirect_to root_path, notice: 'Order successfully placed'
+      @order.order_items.where.not(status: 'Complete').update(status: 'Complete', deleted: true)
+      redirect_to root_path, notice: 'Order successfully placed'
     else
       render :address
     end
