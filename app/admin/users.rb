@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  actions :all, except: %i[new edit destroy]
+
   controller do
     def scoped_collection
       @users = User.with_orders(current_admin_user)

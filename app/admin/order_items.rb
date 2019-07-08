@@ -1,6 +1,5 @@
 ActiveAdmin.register OrderItem do
-  config.remove_action_item(:new)
-  actions :all, except: :create
+  actions :all, except: %i[new edit]
 
   controller do
     def scoped_collection
