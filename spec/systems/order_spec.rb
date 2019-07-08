@@ -75,4 +75,18 @@ describe 'orders', type: :system, js: true do
       expect(page).to have_content('109.80')
     end
   end
+
+  scenario 'user can remove item from order list' do
+    login user
+    click_on 'Cranberry'
+    click_on 'Add to Basket'
+
+    visit '/order'
+
+    within(".cell-#{OrderItem.last.id}") do
+      click_on 'Remove'
+    end
+
+    expect(page).not_to have_content('Cranberry')
+  end
 end
