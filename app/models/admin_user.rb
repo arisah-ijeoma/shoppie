@@ -4,4 +4,8 @@ class AdminUser < ApplicationRecord
 
   has_many :order_items
   has_many :categories, dependent: :destroy
+
+  def order_notification
+    Notifier.order_notification(self).deliver
+  end
 end
