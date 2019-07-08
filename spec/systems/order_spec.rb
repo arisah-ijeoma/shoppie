@@ -92,13 +92,14 @@ describe 'orders', type: :system, js: true do
 
     # first item
     add_product_to_basket
+
     # adding another product updates the count
     visit category_product_path(product_2.category, product_2)
     click_on 'Add to Basket'
 
     visit '/order'
 
-    within(".cell-#{OrderItem.first.id}", visible: false) do
+    within(".cell-#{OrderItem.first.id}") do
       click_on 'Remove'
     end
 
