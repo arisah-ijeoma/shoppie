@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def update_user_details
-    # binding.pry
     @user = current_user
     name = params[:user][:name]
     address = params[:user][:address]

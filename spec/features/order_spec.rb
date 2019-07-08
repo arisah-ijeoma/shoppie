@@ -42,5 +42,18 @@ describe 'orders', type: :feature do
       click_on 'Place order'
       expect(page).to have_content("can't be blank")
     end
+
+    scenario 'order is placed when name and address are added' do
+      login nameless_user
+      click_on 'Basket'
+      click_on 'Next'
+
+      fill_in 'Name', with: 'Jayita'
+      click_on 'Place order'
+
+      expect(OrderItem.last.reload.status).to eq('Complete')
+      expect(page).to have_content('Order successfully placed')
+      expect(page).to have_selector('#order_count', visible: false, text: '1')
+    end
   end
 end
