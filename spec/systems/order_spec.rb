@@ -83,9 +83,11 @@ describe 'orders', type: :system, js: true do
 
     visit '/order'
 
-    within(".cell-#{OrderItem.last.id}") do
+    within(".cell-#{OrderItem.last.id}", visible: false) do
       click_on 'Remove'
     end
+
+    page.driver.browser.switch_to.alert.accept
 
     expect(page).not_to have_content('Cranberry')
   end
