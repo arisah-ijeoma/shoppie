@@ -6,6 +6,6 @@ class AdminUser < ApplicationRecord
   has_many :categories, dependent: :destroy
 
   def order_notification
-    Notifier.order_notification(self).deliver
+    Notifier.order_notification(self).deliver_later
   end
 end
