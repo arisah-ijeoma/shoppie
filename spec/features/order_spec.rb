@@ -27,5 +27,14 @@ describe 'orders', type: :feature do
       expect(page).to have_content('Edit basket')
       expect(OrderItem.last.status).to eq('Address')
     end
+
+    scenario 'order can not be placed without adding name and address' do
+      login user
+      click_on 'Basket'
+      click_on 'Next'
+
+      click_on 'Place order'
+      expect(page).to have_content("can't be blank")
+    end
   end
 end
