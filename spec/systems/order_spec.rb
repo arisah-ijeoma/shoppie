@@ -110,18 +110,6 @@ describe 'orders', type: :system, js: true do
     end
   end
 
-  scenario 'order delivery page' do
-    login user
-    add_product_to_basket
-
-    visit '/order'
-    click_on 'Next'
-
-    expect(page).to have_content('Place order')
-    expect(page).to have_content('Edit basket')
-    expect(OrderItem.last.status).to eq('Address')
-  end
-
   def add_product_to_basket
     click_on 'Cranberry'
     click_on 'Add to Basket'
