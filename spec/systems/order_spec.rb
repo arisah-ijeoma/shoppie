@@ -110,6 +110,17 @@ describe 'orders', type: :system, js: true do
     end
   end
 
+  scenario 'editing basket' do
+    login user
+    add_product_to_basket
+
+    visit '/order'
+    click_on 'Next'
+    click_on 'Edit basket'
+
+    expect(OrderItem.last.status).to eq('Basket')
+  end
+
   def add_product_to_basket
     click_on 'Cranberry'
     click_on 'Add to Basket'
