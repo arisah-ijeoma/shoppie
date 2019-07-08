@@ -3,13 +3,12 @@ class OrdersController < ApplicationController
 
   def show
     @order.order_items.where.not(status: 'Basket').update(status: 'Basket')
-    @order_items = @order.order_items
+    @order_items = @order.order_items.for_user
   end
 
   def address
     @order.order_items.where.not(status: 'Address').update(status: 'Address')
     @user = current_user
-    @order_items = @order.order_items
   end
 
   def update_user_details

@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe AdminUser, type: :model do
   let(:admin_user) { create(:admin_user) }
-  let(:order_item_1) { create(:order_item) }
-  let(:order_item_2) { create(:order_item) }
+  let(:order) { create(:order) }
+  let(:order_item_1) { create(:order_item, admin_user: admin_user, order: order) }
+  let(:order_item_2) { create(:order_item, admin_user: admin_user, order: order) }
 
   context 'mail' do
     describe '#order_notification' do
