@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe 'orders', type: :feature do
   let(:user) { create(:user) }
+  let(:nameless_user) { create(:user, name: '') }
   let(:order) { create(:order, user: user) }
   let(:product) { create(:product, name: 'Cranberry', price: '14.90') }
 
@@ -25,11 +26,16 @@ describe 'orders', type: :feature do
 
       expect(page).to have_selector(:link_or_button, 'Place order')
       expect(page).to have_content('Edit basket')
-      expect(OrderItem.last.status).to eq('Address')
+      expect(OrderItem.last.reload.status).to eq('Address')
     end
+  end
+
+  describe 'unnamed user' do
+    let(:order) { create(:order, user: nameless_user) }
+    let!(:order_item) { create(:order_item, order: order, product: product) }
 
     scenario 'order can not be placed without adding name and address' do
-      login user
+      login nameless_user
       click_on 'Basket'
       click_on 'Next'
 

@@ -117,7 +117,7 @@ describe 'orders', type: :system, js: true do
     visit '/order/address'
     click_on 'Edit basket'
 
-    expect(OrderItem.last.status).to eq('Basket')
+    expect(OrderItem.last.reload.status).to eq('Basket')
   end
 
   def add_product_to_basket

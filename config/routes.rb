@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resource :order, only: :show do
     get :address
+    put :update_user_details
   end
   resources :order_items, only: %i[update destroy]
   resources :categories, only: :show do
