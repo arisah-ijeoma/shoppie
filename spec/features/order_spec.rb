@@ -23,7 +23,7 @@ describe 'orders', type: :feature do
       click_on 'Basket'
       click_on 'Next'
 
-      expect(page).to have_content('Place order')
+      expect(page).to have_selector(:link_or_button, 'Place order')
       expect(page).to have_content('Edit basket')
       expect(OrderItem.last.status).to eq('Address')
     end
