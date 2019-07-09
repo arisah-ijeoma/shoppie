@@ -61,7 +61,7 @@ describe 'orders', type: :system, js: true do
     add_product_to_basket
 
     visit '/order'
-    select '2', from: 'quantity'
+    select '2', from: 'quantity', visible: false
 
     within('table') do
       expect(page).to have_content('109.80')
