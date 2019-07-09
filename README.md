@@ -20,4 +20,9 @@ Since it is a sample application, the admin email and password are the same as t
 1. Authorization
 1. Account for guest user
 1. Pagination
-1. Scoped validations
+1. Scoped validations for admin users
+1. Handling errors
+1. Normalizing names
+1. Images on Heroku
+1. Receiving emails on valid email addresses
+1. Better UI design and responsiveness
