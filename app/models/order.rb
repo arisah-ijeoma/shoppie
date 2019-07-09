@@ -16,6 +16,6 @@ class Order < ApplicationRecord
   end
 
   def total
-    order_items.sum(&:sub_total)
+    order_items.for_user.sum(&:sub_total)
   end
 end
